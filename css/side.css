@@ -24,7 +24,6 @@
 .side {
   height: 100%;
   width: 0;
-  position: fixed;
   top: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 1);
@@ -54,7 +53,10 @@ a {
 }
 
 .howToUse {
+  position: absolute;
   font-size: 25px;
   bottom: 10px;
   right: 10px;
+  height: 100px;
 }
+
