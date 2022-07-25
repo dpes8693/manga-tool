@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/side.css" />
+    <style>
+      .imgs {
+        width: 320px;
+        display: flex;
+      }
+      .p-30 {
+        padding: 30px;
+      }
+      .container {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .white {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- side start -->
+    <div id="sideNav" class="sidenav">
+      <a class="fixed font-20 top-2 grey pointer" onclick="closeNav()"
+        >&times;</a
+      >
+      <div class="p-30">
+        <input id="url" type="text" style="width: 210px" />
+        <br />
+        <span class="white">輸入圖片數量:</span>
+        <input id="imgNumber" type="number" value="240" max="300" min="1" style="width: 42px"/>
+        <button onclick="main()">確認</button>
+      </div>
+
+      <div class="p-30">
+        <ul id="controlList" class="white"></ul>
+      </div>
+    </div>
+    <!-- side end -->
+
+    <!-- tag start -->
+    <div class="tag fixed" onclick="openNav()">
+      <span class="font-20 mr-20 grey pointer">&#9776;</span>
+    </div>
+    <!-- tag end -->
+
+    <!-- imgs start -->
+    <div class="container" id="imgContainer"></div>
+    <!-- imgs end -->
+
+    <script src="./js/side.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

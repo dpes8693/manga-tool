@@ -1,0 +1,52 @@
+.pointer {
+  cursor: pointer;
+}
+.grey {
+  color: #818181;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.top-2 {
+  top: 2px;
+}
+
+.font-20 {
+  font-size: 20px;
+}
+
+.mr-20 {
+  margin-right: 20px;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 1);
+  overflow-x: hidden;
+  transition: 0.1s;
+  padding-top: 70px;
+  z-index: 999;
+}
+
+a {
+  padding: 8px;
+  text-decoration: none;
+  color: #007cf1;
+}
+
+.tag span:hover {
+  color: #f1f1f1;
+}
+
+.tag {
+  border-radius: 10px;
+  background-color: black;
+  padding: 7px;
+  right: -23px;
+}
