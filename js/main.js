@@ -1,44 +1,57 @@
 const defaultUrl = `https://s1.baozimh.com/scomic/yushenyitongshengji-ohyeonbain/0/46-cd2o/1.jpg`;
 const url = document.getElementById("url");
-url.value = defaultUrl;
-// { id: 1, href: "", isHide: false }
-// const imgsObject = [];
 let idCounter = 0;
 
-openNav();
+window.onload = function () {
+  url.value = defaultUrl;
+  openNav();
+};
+
+function main() {
+  const imgNumber = document.getElementById("imgNumber").value;
+  createLoop(imgNumber);
+}
+
+function errorHandle() {
+  alert("輸入網址不符合格式");
+}
 
 function createLoop(max) {
-  let page = 1;
   let address = url.value;
   const { imgType, newAddress } = getUrlType(address);
+
+  // check
   if (!imgType || !checkUrl(address)) {
     errorHandle();
     return;
   }
 
-  //   imgsObject.push({ id: idCounter, href: address, isHide: false });
   idCounter++;
-  // 生成包裝
+  // gen wrapper
   const wrapper = document.createElement("div");
   wrapper.id = `imgs-` + idCounter;
   document.getElementById("imgContainer").appendChild(wrapper);
 
-  //   生成 li
+  // gen li
   const newLi = `<li>
   <a href="#${wrapper.id}">${wrapper.id}</a>
   <button onclick="hideImg('${wrapper.id}')">隱藏</button>
   <button onclick="showImg('${wrapper.id}')">顯示</button>
 </li>`;
   document.getElementById("controlList").innerHTML += newLi;
+
+  // gen imgs
+  let page = 1;
   address = newAddress;
   for (let i = 0; i < max; i++) {
     const node = document.createElement("img");
     node.src = address + `${page}.${imgType}`;
     node.className = "imgs";
-    // 新增
     document.getElementById(wrapper.id).appendChild(node);
     page++;
   }
+
+  // end
   url.value = "";
 }
 
@@ -50,10 +63,6 @@ function checkUrl(s) {
   } else {
     return false;
   }
-}
-
-function errorHandle() {
-  alert("輸入網址不符合格式");
 }
 
 function getUrlType(url) {
@@ -69,11 +78,7 @@ function getUrlType(url) {
   }
 }
 
-function main() {
-  const imgNumber = document.getElementById("imgNumber").value;
-  createLoop(imgNumber);
-}
-
+// Sidebar
 function hideImg(id) {
   document.getElementById(id).style = "display:none";
 }
