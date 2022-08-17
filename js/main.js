@@ -18,6 +18,10 @@ function errorHandle() {
 
 function createLoop(max) {
   let address = url.value;
+  if (address.indexOf("baozimh") === -1) {
+    alert("不支援包子漫畫以外的網站");
+    return;
+  }
   const { imgType, newAddress } = getUrlType(address);
 
   // check
@@ -85,4 +89,14 @@ function hideImg(id) {
 
 function showImg(id) {
   document.getElementById(id).style = "display:block";
+}
+
+function pasteText() {
+  // url.focus();
+  (async () => {
+    const text = await navigator.clipboard.readText();
+    if (text) {
+      document.getElementById("url").value = text;
+    }
+  })();
 }
