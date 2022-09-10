@@ -43,6 +43,8 @@ function createLoop(max) {
   <button onclick="showImg('${wrapper.id}')">顯示</button>
 </li>`;
   document.getElementById("controlList").innerHTML += newLi;
+  const maxWidth = window.innerWidth;
+  const stylesheet = document.styleSheets[0]
 
   // gen imgs
   let page = 1;
@@ -50,7 +52,15 @@ function createLoop(max) {
   for (let i = 0; i < max; i++) {
     const node = document.createElement("img");
     node.src = address + `${page}.${imgType}`;
+    
+    stylesheet.insertRule(
+      `.imgs {   
+      display: flex;
+      max-width: ${maxWidth}px;}`,
+      0
+    );
     node.className = "imgs";
+
     document.getElementById(wrapper.id).appendChild(node);
     page++;
   }

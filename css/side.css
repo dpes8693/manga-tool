@@ -51,10 +51,10 @@ button:hover {
 }
 
 /* class */
-.imgs {
-  width: 320px;
+/* .imgs {
+  min-width: 320px;
   display: flex;
-}
+} */
 .container {
   display: flex;
   flex-wrap: nowrap;
