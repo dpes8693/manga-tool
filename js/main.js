@@ -1,15 +1,25 @@
 const defaultUrl = `https://s1.baozimh.com/scomic/yushenyitongshengji-ohyeonbain/0/46-cd2o/1.jpg`;
+
+// url
 const url = document.getElementById("url");
+let address = loadStorage("url") || defaultUrl;
+
+// imgNumber
+const imgNumber = document.getElementById("imgNumber");
+const loadImgNumber = loadStorage("imgNumber") || 240;
+
 let idCounter = 0;
 
 window.onload = function () {
   url.value = defaultUrl;
+  imgNumber.value = loadImgNumber;
   openNav();
 };
 
 function main() {
-  const imgNumber = document.getElementById("imgNumber").value;
-  createLoop(imgNumber);
+  saveStorage("url", url.value);
+  saveStorage("imgNumber", imgNumber.value);
+  createLoop(imgNumber.value);
 }
 
 function errorHandle() {
@@ -17,7 +27,7 @@ function errorHandle() {
 }
 
 function createLoop(max) {
-  let address = url.value;
+  address = url.value;
   if (address.indexOf("baozimh") === -1) {
     alert("不支援包子漫畫以外的網站");
     return;
@@ -44,7 +54,7 @@ function createLoop(max) {
 </li>`;
   document.getElementById("controlList").innerHTML += newLi;
   const maxWidth = window.innerWidth;
-  const stylesheet = document.styleSheets[0]
+  const stylesheet = document.styleSheets[0];
 
   // gen imgs
   let page = 1;
@@ -52,7 +62,7 @@ function createLoop(max) {
   for (let i = 0; i < max; i++) {
     const node = document.createElement("img");
     node.src = address + `${page}.${imgType}`;
-    
+
     stylesheet.insertRule(
       `.imgs {   
       display: flex;
@@ -109,4 +119,12 @@ function pasteText() {
       document.getElementById("url").value = text;
     }
   })();
+}
+
+function saveStorage(keyName, value) {
+  localStorage.setItem(keyName, value);
+}
+
+function loadStorage(keyName) {
+  return localStorage.getItem(keyName);
 }
