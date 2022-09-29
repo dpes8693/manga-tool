@@ -11,7 +11,7 @@ const loadImgNumber = loadStorage("imgNumber") || 240;
 let idCounter = 0;
 
 window.onload = function () {
-  url.value = defaultUrl;
+  url.value = address;
   imgNumber.value = loadImgNumber;
   openNav();
 };
