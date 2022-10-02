@@ -6,7 +6,7 @@
 
 - 學到什麼:
   - [CSS]手刻 Sidebar
-  - [JS]怕框架用太多忘光光原生語法，複習 `createElement` `appendChild` `innerHTML`
+  - [JS]怕框架用太多忘了原生語法，複習 `createElement` `appendChild` `innerHTML`
   - [JS]`match`語法，使用正則表達式尋找網址中的 `.jpg` `.png`
 
 ## 目標
@@ -25,3 +25,5 @@
 1. 在輸入框輸入原始圖片網址(連結)，輸入該漫畫章節圖片數量(max=300)
 2. 按下確認按鈕
 3. 會自動將該話所有圖片下載
+
+按下鍵盤`N`可以打開側邊欄
