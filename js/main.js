@@ -14,6 +14,20 @@ window.onload = function () {
   url.value = address;
   imgNumber.value = loadImgNumber;
   openNav();
+
+  const mainContent = document.getElementById("mainContent");
+  mainContent.onclick = () => {
+    closeNav();
+  };
+  document.onkeydown = function (e) {
+    keyEvent(e);
+  };
+  function keyEvent(e) {
+    var keyNum = window.event ? e.keyCode : e.which;
+    if (keyNum == 78) {
+      openNav();
+    }
+  }
 };
 
 function main() {
