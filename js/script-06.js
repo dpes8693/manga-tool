@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        [包子漫畫]快速前往下一話
 // @namespace    http://tampermonkey.net/
-// @version      0.60
+// @version      0.63
 // @description  按下N鍵 直接前往下一話，不用滾到最底下
 // @author       dpes5407
 // @match        *://*.webmota.com/comic/chapter*
@@ -21,7 +21,7 @@
     var originNuxt = document.getElementById('__nuxt')
     var address = getImgSrc() || "";
     var idCounter = 0;
-    var maxImgAmount = 200;
+    var maxImgAmount = 300;
 
     if (localStorage.getItem('isTriggerHack') == 'true') {
         newImgStart();
@@ -53,14 +53,14 @@
           }`,
             0
         );
-        const newHeader = document.createElement("div");
+        const newHeader = document.createElement("span");
         newHeader.className = 'header123'
 
-        newHeader.innerHTML = `<div>
-            <span style='margin-right:10px;'>${text}</span>
+        newHeader.innerHTML = `<span>
+            <span style='margin-right:5px;'>${text}</span>
             <input type="checkbox" id="isTriggerHack" name="isTriggerHack" checked="true">
-            <label for="isTriggerHack">是否啟用過濾模式</label>
-        </div>` ;
+            <label for="isTriggerHack">過濾</label>
+        </span>` ;
 
         // document.body.appendChild(newHeader);
         document.body.insertBefore(newHeader, originNuxt)
@@ -130,7 +130,10 @@
             return { imgType: "", newAddress: "" };
         }
     }
-    generateBtn("copy", copyImgSrc);
+
+    if (localStorage.getItem('isTriggerHack') !== 'true') {
+        generateBtn("copy", copyImgSrc);
+    }
 
     function getNextChapterUrl() {
         var arr = baseUrl.split("_");
@@ -221,7 +224,7 @@
         var newDiv = document.createElement("div");
         newDiv.innerHTML = `<div>
             <input type="checkbox" id="isTriggerHack" name="isTriggerHack" >
-            <label for="isTriggerHack">是否啟用過濾模式</label>
+            <label for="isTriggerHack">過濾</label>
         </div>` ;
         nav.append(newDiv);
         document.getElementById("isTriggerHack").onchange = function () {
