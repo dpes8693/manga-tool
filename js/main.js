@@ -1,4 +1,7 @@
-const defaultUrl = `https://s1.baozimh.com/scomic/yushenyitongshengji-ohyeonbain/0/46-cd2o/1.jpg`;
+const randNumber = Math.random()
+const defaultUrl = randNumber >= 0.5 ?
+  `https://s1.baozimh.com/scomic/yushenyitongshengji-ohyeonbain/0/46-cd2o/1.jpg`
+  : `https://w3wc.godamanga.online/scomic/chengweitafangyouxilidebaojun-ryumohajunggyong/0/11-lqa1/1.jpg`;
 
 // url
 const url = document.getElementById("url");
@@ -37,15 +40,17 @@ function main() {
 }
 
 function errorHandle() {
-  alert("輸入網址不符合格式");
+  alert("輸入網址為不渲染圖片格式");
 }
 
 function createLoop(max) {
   address = url.value;
-  if (address.indexOf("baozimh") === -1) {
-    alert("不支援包子漫畫以外的網站");
-    return;
-  }
+  console.log(address)
+
+  // if (!address.includes("baozimh")) {
+  //   alert("僅支援baozimh");
+  //   return;
+  // }
   const { imgType, newAddress } = getUrlType(address);
 
   // check
@@ -112,7 +117,7 @@ function getUrlType(url) {
     const imgType = result[0].split(".")[1]; // 1.jpg
     return { imgType, newAddress };
   } else {
-    return null;
+    return {};
   }
 }
 
